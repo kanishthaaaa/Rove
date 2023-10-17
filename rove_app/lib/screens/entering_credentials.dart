@@ -1,14 +1,19 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rove_app/components/my_button.dart';
 import 'package:rove_app/components/my_textfield.dart';
-import 'package:rove_app/screens/entering_credentials.dart';
+import 'package:rove_app/screens/traveller_loginpage.dart';
 
-class TravellerLoginPage extends StatelessWidget {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+class EnteringCredentialPage extends StatelessWidget {
+  EnteringCredentialPage({
+    super.key,
+  });
 
-  TravellerLoginPage({super.key});
+  //text editing controller
+  final idController = TextEditingController();
+  final phoneNumberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,43 +29,37 @@ class TravellerLoginPage extends StatelessWidget {
                   height: 30,
                 ),
                 Text(
-                  'Rove',
+                  'Enter',
                   style: GoogleFonts.poppins(
-                    fontSize: 45,
+                    fontSize: 40,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 Text(
-                  'Welcomes You',
+                  'Your Credentials',
                   style: GoogleFonts.poppins(
-                    fontSize: 36,
+                    fontSize: 30,
                     fontWeight: FontWeight.w600,
                     color: Colors.grey[600],
                   ),
                 ),
                 SizedBox(
-                  height: 60,
-                ),
-                Image(
-                  height: 200,
-                  image: AssetImage(
-                    'lib/images/loginPageImage.png',
-                  ),
+                  height: 250,
                 ),
                 SizedBox(
                   height: 90,
                 ),
                 MyTextField(
-                    controller: emailController,
-                    hintText: 'Username',
+                    controller: idController,
+                    hintText: 'Enter ID',
                     obscureText: false),
                 SizedBox(
                   height: 15,
                 ),
                 MyTextField(
-                    controller: passwordController,
+                    controller: phoneNumberController,
                     hintText: 'Password',
-                    obscureText: true),
+                    obscureText: false),
                 SizedBox(
                   height: 15,
                 ),
@@ -71,35 +70,22 @@ class TravellerLoginPage extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Forgot Password?',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TravellerLoginPage()));
+                  },
+                  child: Center(
+                    child: Text(
+                      'Go back to login',
                       style: GoogleFonts.poppins(
                         fontSize: 18,
+                        color: Color.fromARGB(255, 48, 142, 189),
                       ),
                     ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    EnteringCredentialPage()));
-                      },
-                      child: Text(
-                        'Reset Here',
-                        style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          color: Color.fromARGB(255, 48, 142, 189),
-                        ),
-                      ),
-                    )
-                  ],
+                  ),
                 )
               ],
             ),
