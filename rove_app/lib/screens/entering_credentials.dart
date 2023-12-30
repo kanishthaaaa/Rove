@@ -51,14 +51,14 @@ class EnteringCredentialPage extends StatelessWidget {
                 ),
                 MyTextField(
                     controller: idController,
-                    hintText: 'Enter ID',
+                    hintText: 'Enter your ID',
                     obscureText: false),
                 SizedBox(
                   height: 15,
                 ),
                 MyTextField(
                     controller: phoneNumberController,
-                    hintText: 'Password',
+                    hintText: 'Phone Number',
                     obscureText: false),
                 SizedBox(
                   height: 15,
