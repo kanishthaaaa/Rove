@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rove_app/components/my_button.dart';
+import 'package:rove_app/screens/auth_page.dart';
 import 'package:rove_app/screens/welcome_screen2.dart';
-
 
 class WelcomeScreen1 extends StatelessWidget {
   const WelcomeScreen1({super.key});
@@ -40,13 +40,15 @@ class WelcomeScreen1 extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                 ),
-                Text('Welcome to',
-                style: GoogleFonts.urbanist(
-                  fontSize: 50,
-                  letterSpacing: 2,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),),
+                Text(
+                  'Welcome to',
+                  style: GoogleFonts.urbanist(
+                    fontSize: 50,
+                    letterSpacing: 2,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 Text(
                   'Rove',
                   style: GoogleFonts.urbanist(
@@ -69,10 +71,16 @@ class WelcomeScreen1 extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                MyButton(myButtonColor: Colors.grey, onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) =>const WelcomeScreen2()));
-                }, myButtonText: 'Continue')
-               ],
+                MyButton(
+                    myButtonColor: Colors.grey,
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const WelcomeScreen2()));
+                    },
+                    myButtonText: 'Continue')
+              ],
             ),
           ),
         ],

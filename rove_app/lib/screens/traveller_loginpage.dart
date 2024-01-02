@@ -1,14 +1,79 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rove_app/components/my_button.dart';
 import 'package:rove_app/components/my_textfield.dart';
+import 'package:rove_app/screens/auth_page.dart';
 import 'package:rove_app/screens/entering_credentials.dart';
+import 'package:rove_app/screens/home_page.dart';
 
-class TravellerLoginPage extends StatelessWidget {
+class TravellerLoginPage extends StatefulWidget {
+  TravellerLoginPage({super.key});
+
+  @override
+  State<TravellerLoginPage> createState() => _TravellerLoginPageState();
+}
+
+class _TravellerLoginPageState extends State<TravellerLoginPage> {
   final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
 
-  TravellerLoginPage({super.key});
+  //sign user in method
+  void signUserIn() async {
+    //loading circle
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Center(child: const CircularProgressIndicator());
+        });
+
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+
+      //popping out the circle
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      //popping out the circle
+      Navigator.pop(context);
+      //wrong email
+      if (e.code == 'user-not-found') {
+        //showing error to user
+        wrongEmailMessage();
+        //print('User not found');
+        //wrong password
+      } else if (e.code == 'wrong-password') {
+        //showing error to user
+        wrongPasswordMessage();
+        //print('wrong password');
+      }
+      Navigator.pop(context);
+    }
+    Navigator.pop(context);
+  }
+
+  //wrong email meassage popup
+  void wrongEmailMessage() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            title: Text('Incorrect Email'),
+          );
+        });
+  }
+
+  //wrong password message popup
+  void wrongPasswordMessage() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            title: Text('Incorrect Password'),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +131,7 @@ class TravellerLoginPage extends StatelessWidget {
                 ),
                 MyButton(
                     myButtonColor: Colors.grey,
-                    onTap: () {},
+                    onTap: signUserIn,
                     myButtonText: 'Continue'),
                 SizedBox(
                   height: 10,

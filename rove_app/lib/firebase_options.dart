@@ -21,10 +21,7 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
@@ -52,6 +49,16 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1010857677111',
     projectId: 'rovemaillogin',
     authDomain: 'rovemaillogin.firebaseapp.com',
+    databaseURL: 'https://rovemaillogin-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'rovemaillogin.appspot.com',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyDdiVMYkCPK9zaloTkQ2q9IS2xthmzJFZ4',
+    appId: '1:1010857677111:android:9ce0c8a330d9a833140ab2',
+    messagingSenderId: '1010857677111',
+    projectId: 'rovemaillogin',
+    databaseURL: 'https://rovemaillogin-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'rovemaillogin.appspot.com',
   );
 
@@ -60,6 +67,7 @@ class DefaultFirebaseOptions {
     appId: '1:1010857677111:ios:b3c76dd5a9ddb8f8140ab2',
     messagingSenderId: '1010857677111',
     projectId: 'rovemaillogin',
+    databaseURL: 'https://rovemaillogin-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'rovemaillogin.appspot.com',
     iosBundleId: 'com.example.roveApp',
   );
@@ -69,6 +77,7 @@ class DefaultFirebaseOptions {
     appId: '1:1010857677111:ios:36a4cfaf43fd767e140ab2',
     messagingSenderId: '1010857677111',
     projectId: 'rovemaillogin',
+    databaseURL: 'https://rovemaillogin-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'rovemaillogin.appspot.com',
     iosBundleId: 'com.example.roveApp.RunnerTests',
   );
