@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rove_app/components/my_button.dart';
 import 'package:rove_app/components/welcomescreen_model.dart';
+import 'package:rove_app/screens/auth_page.dart';
 import 'package:rove_app/screens/entering_credentials.dart';
 import 'package:rove_app/screens/traveller_loginpage.dart';
 
@@ -32,7 +33,7 @@ class WelcomeScreen3 extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => TravellerLoginPage(),
+                            builder: (context) => AuthPage(),
                           ),
                         );
                       },
